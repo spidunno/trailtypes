@@ -1,0 +1,19 @@
+{
+  "name": "trailtypes",
+  "version": "1.0.0",
+  "files": [
+    "types/**/*.d.ts"
+  ],
+  "types": "./types/index.d.ts",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript-to-lua": "^1.27.1"
+  },
+  "dependencies": {
+    "@typescript-to-lua/language-extensions": "^1.19.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.6.3"
+  },
+  "type": "module"
+}

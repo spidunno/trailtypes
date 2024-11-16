@@ -1,5 +1,21 @@
 /** @noSelfInFile */
 export type {};
+import "./audio";
+import "./input";
+import "./ModBlock";
+import "./ModColor";
+import "./ModGameObject";
+import "./ModRaycastHit";
+import "./ModStructure";
+import "./ModTransform";
+import "./os";
+import "./physics";
+import "./players";
+import "./playerui";
+import "./quaternion";
+import "./vector3";
+import "./world";
+import '@typescript-to-lua/language-extensions';
 
 declare global {
 	/**

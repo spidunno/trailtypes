@@ -8,6 +8,8 @@ declare global {
 	 * Lets you trigger functions on key press/release by players
 	 *
 	 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218267762/Input)
+	 * 
+	 * @notExported
 	 */
 	interface ModApiInput {
 		/**

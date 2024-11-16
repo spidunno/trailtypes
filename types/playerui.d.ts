@@ -20,6 +20,8 @@ declare global {
 	 * For adding UI to your mod
 	 *
 	 * [View documents](https://trailmakers.wiki.gg/wiki/Modding:PlayerUI)
+	 * 
+	 * @notExported
 	 */
 	interface ModApiPlayerUI {
 		/**

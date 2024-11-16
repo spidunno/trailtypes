@@ -6,6 +6,8 @@ declare global {
 	 * A 3-axis vector (position, rotation, scale, etc.), can store 3 numbers
 	 *
 	 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218595371/ModVector3)
+	 * 
+	 * @notExported
 	 */
 	interface ModVector3 {
 		/**

@@ -8,6 +8,8 @@ declare global {
 	 * Represents a creation in the game
 	 *
 	 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218103875/ModStructure)
+	 * 
+	 * @notExported
 	 */
 	interface ModStructure {
 		/**

@@ -4,6 +4,8 @@ import type { TextureName } from "./physics";
 declare global {
 	/**
 	 * Object representing a player in the game
+	 * 
+	 * @notExported
 	 */
 	interface Player {
 		playerId: PlayerID;
@@ -19,6 +21,9 @@ declare global {
 		toString(): string; //'Trailmakers.Mods.Api.ModApiPlayers+Player';
 	}
 
+	/**
+	 * @notExported
+	 */
 	interface OnPlayerEvent {
 		/**
 		 * Add function to event
@@ -35,6 +40,8 @@ declare global {
 	 * interface defining `tm.players`
 	 *
 	 * Everything to do with players actions and info
+	 * 
+	 * @notExported
 	 */
 	interface ModApiPlayers {
 		/**

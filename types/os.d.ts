@@ -6,6 +6,8 @@ declare global {
 	 * interface defining `tm.os`
 	 *
 	 * OS-level functionality. Everything to do with files and general mod systems
+	 * 
+	 * @notExported
 	 */
 	interface ModApiTmOs {
 		/**

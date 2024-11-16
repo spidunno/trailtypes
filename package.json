@@ -5,12 +5,16 @@
 		"types/**/*.d.ts"
 	],
 	"devDependencies": {
+		"typedoc": "^0.26.11",
+		"typedoc-github-wiki-theme": "^2.0.0",
+		"typedoc-plugin-markdown": "^4.2.10",
 		"typescript": "^5.6.2",
 		"typescript-to-lua": "^1.27.1"
 	},
 	"types": "./types/index.d.ts",
 	"dependencies": {
-		"@typescript-to-lua/language-extensions": "^1.19.0"
+		"@typescript-to-lua/language-extensions": "^1.19.0",
+		"@zamiell/typedoc-plugin-not-exported": "^0.3.0"
 	},
 	"type": "module"
 }

@@ -6,6 +6,8 @@ declare global {
 	 * interface defining `tm.world`
 	 *
 	 * Represents the current world
+	 * 
+	 * @notExported
 	 */
 	interface ModApiWorld {
 		/**

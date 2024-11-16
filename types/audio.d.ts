@@ -8,6 +8,8 @@ declare global {
 	 * Lets you play audio and effect audio
 	 *
 	 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/219185167/Audio)
+	 * 
+	 * @notExported
 	 */
 	interface ModApiAudio {
 		/**

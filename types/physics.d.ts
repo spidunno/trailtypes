@@ -8,6 +8,8 @@ declare global {
 	 * Everything that can effect physics, like gravity, spawning objects, and importing meshes. Environment, Physics, Time, Assets and Objects
 	 *
 	 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218169403/Physics)
+	 * 
+	 * @notExported
 	 */
 	interface ModApiPhysics {
 		/**

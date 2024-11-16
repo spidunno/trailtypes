@@ -4,6 +4,8 @@ export {};
 declare global {
 	/**
 	 * Object containing the information of a raycast hit
+	 * 
+	 * @notExported
 	 */
 	interface ModRaycastHit {
 		/**

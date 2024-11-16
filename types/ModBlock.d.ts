@@ -6,6 +6,8 @@ declare global {
 	 * Represents a block in a structure
 	 *
 	 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218562585/ModBlock)
+	 * 
+	 * @notExported
 	 */
 	interface ModBlock {
 		/**

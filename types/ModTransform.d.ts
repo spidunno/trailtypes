@@ -6,6 +6,8 @@ declare global {
 	 * Represents a Transform (position, rotation, scale) of a GameObject
 	 *
 	 * [View documents](https://trailmakers.wiki.gg/wiki/Modding:ModTransform)
+	 * 
+	 * @notExported
 	 */
 	interface ModTransform {
 		/**

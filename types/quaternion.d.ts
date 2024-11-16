@@ -6,6 +6,8 @@ declare global {
 	 * Quaternion object. Quaternions are for rotations, they get rid of gimbal lock that a vector3 rotation runs into. Quaternions can store 4 numbers
 	 *
 	 * [View documents](https://trailmakers.wiki.gg/wiki/Modding:ModQuaternion)
+	 * 
+	 * @notExported
 	 */
 	interface ModQuaternion {
 		/**

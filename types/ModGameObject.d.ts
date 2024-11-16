@@ -8,6 +8,8 @@ declare global {
 	 * Represents a game object in the game environment
 	 *
 	 * [View documents](https://trailmakers.wiki.gg/wiki/Modding:ModGameObject)
+	 * 
+	 * @notExported
 	 */
 	interface ModGameObject {
 		/**

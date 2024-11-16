@@ -4,6 +4,8 @@ export {};
 declare global {
 	/**
 	 * Represents a color
+	 * 
+	 * @notExported
 	 */
 	interface ModColor {
 		/**

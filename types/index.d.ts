@@ -1,6 +1,4 @@
 /** @noSelfInFile */
-export type {};
-import '@typescript-to-lua/language-extensions';
 import { ModApiTmOs } from './os';
 import { ModApiPhysics } from './physics';
 import { ModApiPlayers } from './players';

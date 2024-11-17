@@ -1,4 +1,5 @@
 /** @noSelfInFile */
+import '@typescript-to-lua/language-extensions';
 
 /**
  * A 3-axis vector (position, rotation, scale, etc.), can store 3 numbers

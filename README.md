@@ -1,4 +1,5 @@
-![TrailTypes](https://github.com/user-attachments/assets/45711b31-6b03-43f6-a0ce-ceeeee2d603e)
+![TrailTypes](https://github.com/user-attachments/assets/0d46a55f-ec48-4043-adf4-69e11d765d21)
+
 
 
 This project includes Typescript type definitions definitions for the Trailmakers modding API, for use with [TypescriptToLua](https://github.com/TypeScriptToLua/TypeScriptToLua).

@@ -1,243 +1,244 @@
 /** @noSelfInFile */
-export type {};
 
-declare global {
+import { ModGameObject } from "./ModGameObject";
+import { ModRaycastHit } from "./ModRaycastHit";
+import { ModVector3 } from "./vector3";
+
+/**
+ * interface defining `tm.physics`
+ *
+ * Everything that can effect physics, like gravity, spawning objects, and importing meshes. Environment, Physics, Time, Assets and Objects
+ *
+ * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218169403/Physics)
+ */
+export interface ModApiPhysics {
 	/**
-	 * interface defining `tm.physics`
-	 *
-	 * Everything that can effect physics, like gravity, spawning objects, and importing meshes. Environment, Physics, Time, Assets and Objects
-	 *
-	 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218169403/Physics)
+	 * Set the physics timescale relative to the default speed (acts as a multiplier of the normal time speed)
 	 */
-	interface ModApiPhysics {
-		/**
-		 * Set the physics timescale relative to the default speed (acts as a multiplier of the normal time speed)
-		 */
-		SetTimeScale(speed: number): void;
+	SetTimeScale(speed: number): void;
 
-		/**
-		 * Get the physics timescale relative to the default speed (acts as a multiplier of the normal time speed)
-		 */
-		GetTimeScale(): number;
+	/**
+	 * Get the physics timescale relative to the default speed (acts as a multiplier of the normal time speed)
+	 */
+	GetTimeScale(): number;
 
-		/**
-		 * Set the physics gravity in the down direction. Units are `m/s²`, default is `14 m/s²`
-		 *
-		 * @deprecated USE `.SetGravityMultiplier()` INSTEAD
-		 */
-		SetGravity(strength: number): void;
+	/**
+	 * Set the physics gravity in the down direction. Units are `m/s²`, default is `14 m/s²`
+	 *
+	 * @deprecated USE `.SetGravityMultiplier()` INSTEAD
+	 */
+	SetGravity(strength: number): void;
 
-		/**
-		 * Set the gravity multiplier. Has no effect in zero G locations. For example, setting the multiplier to 2 doubles gravity
-		 */
-		SetGravityMultiplier(multiplier: number): void;
+	/**
+	 * Set the gravity multiplier. Has no effect in zero G locations. For example, setting the multiplier to 2 doubles gravity
+	 */
+	SetGravityMultiplier(multiplier: number): void;
 
-		/**
-		 * Set the physics gravity as per the provided vector. Units are `m/s²`, default is `(0, -14, 0) m/s²`
-		 *
-		 * @deprecated FUNCTIONALITY MIGHT NOT WORK AS INTENDED
-		 */
-		SetGravity(gravity: ModVector3): void;
+	/**
+	 * Set the physics gravity as per the provided vector. Units are `m/s²`, default is `(0, -14, 0) m/s²`
+	 *
+	 * @deprecated FUNCTIONALITY MIGHT NOT WORK AS INTENDED
+	 */
+	SetGravity(gravity: ModVector3): void;
 
-		/**
-		 * Get the physics gravity. Units are `m/s²`, default is `(0, 14, 0) m/s²`
-		 *
-		 * @deprecated FUNCTIONALITY MIGHT NOT WORK AS INTENDED
-		 */
-		GetGravity(): ModVector3;
+	/**
+	 * Get the physics gravity. Units are `m/s²`, default is `(0, 14, 0) m/s²`
+	 *
+	 * @deprecated FUNCTIONALITY MIGHT NOT WORK AS INTENDED
+	 */
+	GetGravity(): ModVector3;
 
-		/**
-		 * Get the gravity multiplier
-		 */
-		GetGravityMultiplier(): number;
+	/**
+	 * Get the gravity multiplier
+	 */
+	GetGravityMultiplier(): number;
 
-		/**
-		 * Spawn a spawnable, e.g. PFB_Barrel, at the position
-		 *
-		 * [View documents](https://trailmakers.wiki.gg/wiki/Modding:ModGameObject#Example_-_Spawning_a_built-in_object)
-		 * @param position Position of the object
-		 * @param name Name of the object. Can only be a default asset name (from the list returned by `tm.physics.SpawnableNames()`)
-		 */
-		SpawnObject(position: ModVector3, name: Spawnable): ModGameObject;
+	/**
+	 * Spawn a spawnable, e.g. PFB_Barrel, at the position
+	 *
+	 * [View documents](https://trailmakers.wiki.gg/wiki/Modding:ModGameObject#Example_-_Spawning_a_built-in_object)
+	 * @param position Position of the object
+	 * @param name Name of the object. Can only be a default asset name (from the list returned by `tm.physics.SpawnableNames()`)
+	 */
+	SpawnObject(position: ModVector3, name: Spawnable): ModGameObject;
 
-		/**
-		 * Despawn all objects spawned by this mod
-		 */
-		ClearAllSpawns(): void;
+	/**
+	 * Despawn all objects spawned by this mod
+	 */
+	ClearAllSpawns(): void;
 
-		/**
-		 * Despawn a spawnable, e.g. PFB_Barrel. Same as `gameObject.Despawn()`
-		 */
-		DespawnObject(gameObject: ModGameObject): void;
+	/**
+	 * Despawn a spawnable, e.g. PFB_Barrel. Same as `gameObject.Despawn()`
+	 */
+	DespawnObject(gameObject: ModGameObject): void;
 
-		/**
-		 * Get a list of all possible spawnable object names
-		 *
-		 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218267747/Spawnables)
-		 *
-		 * TODO: MAKE SURE THE `Spawnable`/`Spawnables` TYPE IS UP TO DATE.
-		 */
-		SpawnableNames(): Spawnables;
+	/**
+	 * Get a list of all possible spawnable object names
+	 *
+	 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218267747/Spawnables)
+	 *
+	 * TODO: MAKE SURE THE `Spawnable`/`Spawnables` TYPE IS UP TO DATE.
+	 */
+	SpawnableNames(): Spawnables;
 
-		/**
-		 * Resets the physics timescale
-		 */
-		RemoveTimeScale(): void;
+	/**
+	 * Resets the physics timescale
+	 */
+	RemoveTimeScale(): void;
 
-		/**
-		 * Add a mesh to all clients, note this mesh will have to be sent to the client when they join (handled automatically)
-		 *
-		 * [View documents](https://trailmakers.wiki.gg/wiki/Modding:Custom_Assets)
-		 * @param filename The name of the mesh in the mod files (Must use the `.obj` format)
-		 * @param resourceName The name that the mesh will use.
-		 */
-		AddMesh(filename: string, resourceName: MeshName): void;
+	/**
+	 * Add a mesh to all clients, note this mesh will have to be sent to the client when they join (handled automatically)
+	 *
+	 * [View documents](https://trailmakers.wiki.gg/wiki/Modding:Custom_Assets)
+	 * @param filename The name of the mesh in the mod files (Must use the `.obj` format)
+	 * @param resourceName The name that the mesh will use.
+	 */
+	AddMesh(filename: string, resourceName: MeshName): void;
 
-		/**
-		 * Add a texture to all clients, note this texture will have to be sent to the client when they join (handled automatically)
-		 *
-		 * [View documents](https://trailmakers.wiki.gg/wiki/Modding:Custom_Assets)
-		 * @param filename The name of the texture in the mod files (Must use the `.png` or `.jpg` format)
-		 * @param resourceName The name that the texture will use.
-		 */
-		AddTexture(filename: string, resourceName: TextureName): void;
+	/**
+	 * Add a texture to all clients, note this texture will have to be sent to the client when they join (handled automatically)
+	 *
+	 * [View documents](https://trailmakers.wiki.gg/wiki/Modding:Custom_Assets)
+	 * @param filename The name of the texture in the mod files (Must use the `.png` or `.jpg` format)
+	 * @param resourceName The name that the texture will use.
+	 */
+	AddTexture(filename: string, resourceName: TextureName): void;
 
-		/**
-		 * Spawn a custom physics object
-		 *
-		 * [View documents](https://trailmakers.wiki.gg/wiki/Modding:Custom_Assets)
-		 * @param position The position to spawn the object at
-		 * @param meshName The name of the mesh that the object will use
-		 * @param textureName The name of the texture that the object will use
-		 * @param isKinematic Whether the object will be affected by physics or not
-		 * @param mass The mass of the object. Units are `5kg`
-		 * @return Game object spawned
-		 */
-		SpawnCustomObjectRigidbody(
-			position: ModVector3,
-			meshName: MeshName,
-			textureName: TextureName,
-			isKinematic: boolean,
-			mass: number
-		): ModGameObject;
+	/**
+	 * Spawn a custom physics object
+	 *
+	 * [View documents](https://trailmakers.wiki.gg/wiki/Modding:Custom_Assets)
+	 * @param position The position to spawn the object at
+	 * @param meshName The name of the mesh that the object will use
+	 * @param textureName The name of the texture that the object will use
+	 * @param isKinematic Whether the object will be affected by physics or not
+	 * @param mass The mass of the object. Units are `5kg`
+	 * @return Game object spawned
+	 */
+	SpawnCustomObjectRigidbody(
+		position: ModVector3,
+		meshName: MeshName,
+		textureName: TextureName,
+		isKinematic: boolean,
+		mass: number
+	): ModGameObject;
 
-		/**
-		 * Spawn a custom object
-		 *
-		 * [View documents](https://trailmakers.wiki.gg/wiki/Modding:Custom_Assets)
-		 * @param position The position to spawn the object at
-		 * @param meshName The name of the mesh that the object will use
-		 * @param textureName TextureName The name of the texture that the object will use
-		 *
-		 * @return Game object spawned
-		 */
-		SpawnCustomObject(
-			position: ModVector3,
-			meshName: MeshName,
-			textureName: TextureName
-		): ModGameObject;
+	/**
+	 * Spawn a custom object
+	 *
+	 * [View documents](https://trailmakers.wiki.gg/wiki/Modding:Custom_Assets)
+	 * @param position The position to spawn the object at
+	 * @param meshName The name of the mesh that the object will use
+	 * @param textureName TextureName The name of the texture that the object will use
+	 *
+	 * @return Game object spawned
+	 */
+	SpawnCustomObject(
+		position: ModVector3,
+		meshName: MeshName,
+		textureName: TextureName
+	): ModGameObject;
 
-		/**
-		 * Spawn a custom object with concave collision support
-		 *
-		 * [View documents](https://trailmakers.wiki.gg/wiki/Modding:Custom_Assets)
-		 * @param position The position to spawn the object at
-		 * @param meshName The name of the mesh that the object will use
-		 * @param textureName The name of the texture that the object will use
-		 * @return Game object spawned
-		 */
-		SpawnCustomObjectConcave(
-			position: ModVector3,
-			meshName: MeshName,
-			textureName: TextureName
-		): ModGameObject;
+	/**
+	 * Spawn a custom object with concave collision support
+	 *
+	 * [View documents](https://trailmakers.wiki.gg/wiki/Modding:Custom_Assets)
+	 * @param position The position to spawn the object at
+	 * @param meshName The name of the mesh that the object will use
+	 * @param textureName The name of the texture that the object will use
+	 * @return Game object spawned
+	 */
+	SpawnCustomObjectConcave(
+		position: ModVector3,
+		meshName: MeshName,
+		textureName: TextureName
+	): ModGameObject;
 
-		/**
-		 * Spawn a box trigger that will detect overlap but will not interact with physics
-		 *
-		 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218267704/ModGameObject#Example---Spawning-a-trigger)
-		 * @param position The position to spawn the Box Trigger at
-		 * @param size The Box Trigger' size
-		 * @return Game object spawned
-		 */
-		SpawnBoxTrigger(position: ModVector3, size: ModVector3): ModGameObject;
+	/**
+	 * Spawn a box trigger that will detect overlap but will not interact with physics
+	 *
+	 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218267704/ModGameObject#Example---Spawning-a-trigger)
+	 * @param position The position to spawn the Box Trigger at
+	 * @param size The Box Trigger' size
+	 * @return Game object spawned
+	 */
+	SpawnBoxTrigger(position: ModVector3, size: ModVector3): ModGameObject;
 
-		/**
-		 * Sets the build complexity value. Default value is `700` and values above it can make the game unstable
-		 */
-		SetBuildComplexity(value: number): void;
+	/**
+	 * Sets the build complexity value. Default value is `700` and values above it can make the game unstable
+	 */
+	SetBuildComplexity(value: number): void;
 
-		/**
-		 * Registers a function to the collision enter callback of a game object
-		 *
-		 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218169403/Physics#Collision-Callbacks)
-		 * @param targetObject Object for which the callback will be registered
-		 * @param functionName Name of the function to register. Must be in the global scope. This function will be executed with the `PlayerID` of the player who triggered it as its only parameter
-		 *
-		 */
-		RegisterFunctionToCollisionEnterCallback(
-			targetObject: ModGameObject,
-			functionName: string
-		): void;
+	/**
+	 * Registers a function to the collision enter callback of a game object
+	 *
+	 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218169403/Physics#Collision-Callbacks)
+	 * @param targetObject Object for which the callback will be registered
+	 * @param functionName Name of the function to register. Must be in the global scope. This function will be executed with the `PlayerID` of the player who triggered it as its only parameter
+	 *
+	 */
+	RegisterFunctionToCollisionEnterCallback(
+		targetObject: ModGameObject,
+		functionName: string
+	): void;
 
-		/**
-		 * Registers a function to the collision exit callback of a game object
-		 *
-		 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218169403/Physics#Collision-Callbacks)
-		 * @param targetObject Object for which the callback will be registered
-		 * @param functionName Name of the function to register. Must be in the global scope. This function will be executed with the `PlayerID` of the player who triggered it as its only parameter
-		 *
-		 */
-		RegisterFunctionToCollisionExitCallback(
-			targetObject: ModGameObject,
-			functionName: string
-		): void;
+	/**
+	 * Registers a function to the collision exit callback of a game object
+	 *
+	 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218169403/Physics#Collision-Callbacks)
+	 * @param targetObject Object for which the callback will be registered
+	 * @param functionName Name of the function to register. Must be in the global scope. This function will be executed with the `PlayerID` of the player who triggered it as its only parameter
+	 *
+	 */
+	RegisterFunctionToCollisionExitCallback(
+		targetObject: ModGameObject,
+		functionName: string
+	): void;
 
-		/**
-		 * Returns a bool if raycast hit something. Hit argument gets overwritten with raycast data
-		 *
-		 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218169403/Physics#Raycast)
-		 * @param origin Origin of the raycast
-		 * @param direction Direction of the raycast in euler angles
-		 * @param hitPositionOut Reference to the vector in which the hit position will be stored (only modified if the raycast hit an object)
-		 * @param maxDistance Max distance from the origin to check for hits. If undefined, the distance is infinite
-		 * @param ignoreTriggers Whether to ignore tgrigger objects
-		 *
-		 * @returns Whether an object has been hit
-		 */
-		Raycast(
-			origin: ModVector3,
-			direction: ModVector3,
-			hitPositionOut: ModVector3,
-			maxDistance?: number,
-			ignoreTriggers?: boolean
-		): boolean;
+	/**
+	 * Returns a bool if raycast hit something. Hit argument gets overwritten with raycast data
+	 *
+	 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218169403/Physics#Raycast)
+	 * @param origin Origin of the raycast
+	 * @param direction Direction of the raycast in euler angles
+	 * @param hitPositionOut Reference to the vector in which the hit position will be stored (only modified if the raycast hit an object)
+	 * @param maxDistance Max distance from the origin to check for hits. If undefined, the distance is infinite
+	 * @param ignoreTriggers Whether to ignore tgrigger objects
+	 *
+	 * @returns Whether an object has been hit
+	 */
+	Raycast(
+		origin: ModVector3,
+		direction: ModVector3,
+		hitPositionOut: ModVector3,
+		maxDistance?: number,
+		ignoreTriggers?: boolean
+	): boolean;
 
-		/**
-		 * Casts a ray with the specific settings and returns a `ModRaycastHit`
-		 *
-		 * @param origin Origin of the raycast
-		 * @param direction Direction of the raycast in euler angles
-		 * @param maxDistance Max distance from the origin to check for hits
-		 * @param ignoreTriggers Whether to ignore trigger objects
-		 */
-		RaycastData(
-			origin: ModVector3,
-			direction: ModVector3,
-			maxDistance: number,
-			ignoreTriggers?: boolean
-		): ModRaycastHit;
+	/**
+	 * Casts a ray with the specific settings and returns a `ModRaycastHit`
+	 *
+	 * @param origin Origin of the raycast
+	 * @param direction Direction of the raycast in euler angles
+	 * @param maxDistance Max distance from the origin to check for hits
+	 * @param ignoreTriggers Whether to ignore trigger objects
+	 */
+	RaycastData(
+		origin: ModVector3,
+		direction: ModVector3,
+		maxDistance: number,
+		ignoreTriggers?: boolean
+	): ModRaycastHit;
 
-		/**
-		 * Returns the internal name for the current map
-		 */
-		GetMapName(): string;
+	/**
+	 * Returns the internal name for the current map
+	 */
+	GetMapName(): string;
 
-		/**
-		 * Returns the wind velocity at a position
-		 */
-		GetWindVelocityAtPosition(position: ModVector3): ModVector3;
-	}
+	/**
+	 * Returns the wind velocity at a position
+	 */
+	GetWindVelocityAtPosition(position: ModVector3): ModVector3;
 }
 
 export type MeshName = string;

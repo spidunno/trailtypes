@@ -1,43 +1,41 @@
 /** @noSelfInFile */
 import { PlayerID } from "./players";
 
-declare global {
+/**
+ * interface defining `tm.input`
+ *
+ * Lets you trigger functions on key press/release by players
+ *
+ * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218267762/Input)
+ */
+export interface ModApiInput {
 	/**
-	 * interface defining `tm.input`
-	 *
-	 * Lets you trigger functions on key press/release by players
+	 * Registers a function to the callback of when the given player presses the given key
 	 *
 	 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218267762/Input)
+	 * @param playerId Player for which the function will be registered
+	 * @param functionName Name of the function to register. Must be in the global scope. This function will be executed with the `PlayerID` of the player who triggered it as its only parameter
+	 * @param keyName Name of the key to use
 	 */
-	interface ModApiInput {
-		/**
-		 * Registers a function to the callback of when the given player presses the given key
-		 *
-		 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218267762/Input)
-		 * @param playerId Player for which the function will be registered
-		 * @param functionName Name of the function to register. Must be in the global scope. This function will be executed with the `PlayerID` of the player who triggered it as its only parameter
-		 * @param keyName Name of the key to use
-		 */
-		RegisterFunctionToKeyDownCallback(
-			playerId: PlayerID,
-			functionName: string,
-			keyName: InputKey
-		): void;
+	RegisterFunctionToKeyDownCallback(
+		playerId: PlayerID,
+		functionName: string,
+		keyName: InputKey
+	): void;
 
-		/**
-		 * Registers a function to the callback of when the given player releases the given key
-		 *
-		 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218267762/Input)
-		 * @param playerId Player for which the function will be registered
-		 * @param functionName Name of the function to register. Must be in the global scope. This function will be executed with the `PlayerID` of the player who triggered it as its only parameter
-		 * @param keyName Name of the key to use
-		 */
-		RegisterFunctionToKeyUpCallback(
-			playerId: PlayerID,
-			functionName: string,
-			keyName: InputKey
-		): void;
-	}
+	/**
+	 * Registers a function to the callback of when the given player releases the given key
+	 *
+	 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/218267762/Input)
+	 * @param playerId Player for which the function will be registered
+	 * @param functionName Name of the function to register. Must be in the global scope. This function will be executed with the `PlayerID` of the player who triggered it as its only parameter
+	 * @param keyName Name of the key to use
+	 */
+	RegisterFunctionToKeyUpCallback(
+		playerId: PlayerID,
+		functionName: string,
+		keyName: InputKey
+	): void;
 }
 
 export type InputKey =

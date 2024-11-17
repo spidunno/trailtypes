@@ -1,53 +1,53 @@
 /** @noSelfInFile */
-export type {};
 
-declare global {
+import { ModGameObject } from "./ModGameObject";
+import { ModVector3 } from "./vector3";
+
+/**
+ * interface defining `tm.audio`
+ *
+ * Lets you play audio and effect audio
+ *
+ * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/219185167/Audio)
+ */
+export interface ModApiAudio {
 	/**
-	 * interface defining `tm.audio`
+	 * Play audio at a position. This is more cost friendly but you can not stop or move the sound
 	 *
-	 * Lets you play audio and effect audio
+	 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/219185167/Audio#Example---Play-an-explosion-sound-at-players-position-every-second)
 	 *
-	 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/219185167/Audio)
+	 * @param audioName Name of the audio to play
+	 * @param position Position of the audio
+	 * @param keepObjectDuration Duration of the audio
 	 */
-	interface ModApiAudio {
-		/**
-		 * Play audio at a position. This is more cost friendly but you can not stop or move the sound
-		 *
-		 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/219185167/Audio#Example---Play-an-explosion-sound-at-players-position-every-second)
-		 *
-		 * @param audioName Name of the audio to play
-		 * @param position Position of the audio
-		 * @param keepObjectDuration Duration of the audio
-		 */
-		PlayAudioAtPosition(
-			audioName: AudioName,
-			position: ModVector3,
-			keepObjectDuration: number
-		): void;
+	PlayAudioAtPosition(
+		audioName: AudioName,
+		position: ModVector3,
+		keepObjectDuration: number
+	): void;
 
-		/**
-		 * Play audio on a GameObject
-		 *
-		 * @param audioName Name of the audio to play
-		 * @param modGameObject GameObject on which the audio should be played
-		 */
-		PlayAudioAtGameobject(
-			audioName: AudioName,
-			modGameObject: ModGameObject
-		): void;
+	/**
+	 * Play audio on a GameObject
+	 *
+	 * @param audioName Name of the audio to play
+	 * @param modGameObject GameObject on which the audio should be played
+	 */
+	PlayAudioAtGameobject(
+		audioName: AudioName,
+		modGameObject: ModGameObject
+	): void;
 
-		/**
-		 * Stops all audio on a GameObject
-		 */
-		StopAllAudioAtGameobject(modGameObject: ModGameObject): void;
+	/**
+	 * Stops all audio on a GameObject
+	 */
+	StopAllAudioAtGameobject(modGameObject: ModGameObject): void;
 
-		/**
-		 * Returns a list of all playable audio names
-		 *
-		 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/219185167/Audio#List-of-Audio-Event-names)
-		 */
-		GetAudioNames(): string[];
-	}
+	/**
+	 * Returns a list of all playable audio names
+	 *
+	 * [View documents](https://flashbulb.atlassian.net/wiki/spaces/TMMOD/pages/219185167/Audio#List-of-Audio-Event-names)
+	 */
+	GetAudioNames(): string[];
 }
 
 //#region AudioName

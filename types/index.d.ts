@@ -1,21 +1,15 @@
 /** @noSelfInFile */
 export type {};
-import "./audio";
-import "./input";
-import "./ModBlock";
-import "./ModColor";
-import "./ModGameObject";
-import "./ModRaycastHit";
-import "./ModStructure";
-import "./ModTransform";
-import "./os";
-import "./physics";
-import "./players";
-import "./playerui";
-import "./quaternion";
-import "./vector3";
-import "./world";
 import '@typescript-to-lua/language-extensions';
+import { ModApiTmOs } from './os';
+import { ModApiPhysics } from './physics';
+import { ModApiPlayers } from './players';
+import { ModApiPlayerUI } from './playerui';
+import { ModApiAudio } from './audio';
+import { ModApiInput } from './input';
+import { ModVector3 } from './vector3';
+import { ModQuaternion } from './quaternion';
+import { ModApiWorld } from './world';
 
 declare global {
 	/**
@@ -84,3 +78,20 @@ declare global {
 		function GetDocs(): string;
 	}
 }
+
+export * from "./ModBlock";
+export * from "./ModColor";
+export * from "./ModGameObject";
+export * from "./ModRaycastHit";
+export * from "./ModStructure";
+export * from "./ModTransform";
+export * from "./audio";
+export * from "./input";
+export * from "./os";
+export * from "./physics";
+export * from "./players";
+export * from "./playerui";
+export * from "./quaternion";
+export * from "./utilTypes";
+export * from "./vector3";
+export * from "./world";
